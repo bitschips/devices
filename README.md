@@ -2,14 +2,14 @@
 
 Aplicación web instalable (PWA) para inventariar lámparas solares, paneles, baterías y otros dispositivos electrónicos, y documentar sus pruebas.
 
-**Versión:** 1.0.0 · **Fecha:** 20/11/2026
+**Versión:** 1.1.0 · **Fecha:** 20/11/2026
 
 ## Funcionalidades
 
 - Ficha por dispositivo: nombre, categoría, marca/modelo, tienda, fecha de compra, precio en euros, dimensiones, peso, descripción y fotografía.
-- Baterías: química (Ni-Cd, Ni-MH, Li-ion, Li-Po, LiFePO4, plomo-ácido, alcalina u otra), cantidad, formato (AA, 18650, etc.), capacidad en mAh y tensión nominal por batería.
+- Baterías: desplegables para química (Ni-Cd, Ni-MH, Li-ion, Li-Po, LiFePO4, litio primario, LTO, etc.) y formato físico (AAA, AA, Sub-C, CR2032, 10440, 14500, 16340, 18350, 18650, 20700, 21700, 26650, 32700, formatos pouch 103450/602030/503040, etc.). Incluye «Otro formato». Además, cantidad, capacidad en mAh y tensión nominal por batería.
 - Potencia del equipo y características del panel solar.
-- **Diario cronológico** de observaciones ilimitadas por dispositivo: autonomía, carga, medición, incidencia u otra. Cada entrada conserva fecha y texto; se puede eliminar.
+- **Tabla de pruebas por dispositivo:** fecha y hora, tipo (autonomía, carga, medición, incidencia), valor numérico opcional, unidad y texto libre. Se pueden añadir, editar y eliminar filas; los datos se incluyen en XML.
 - Búsqueda de fichas, tiendas y notas; resumen del número de dispositivos, gasto anotado y observaciones.
 - Una foto comprimida a JPEG de hasta 800 px por dispositivo.
 - Datos locales en **localStorage** del navegador, sin cuenta y sin servidor.
@@ -50,3 +50,12 @@ Las fichas, observaciones y fotos **no se almacenan en GitHub**. Viven solo en e
 **Nota:** no es un cargador ni un controlador de seguridad eléctrica; es un cuaderno de registro.
 
 © BitsChips · Uso personal.
+## Nota sobre códigos de baterías
+
+Los formatos cilíndricos de litio como 18650 (aprox. 18 × 65 mm) y 21700 (aprox. 21 × 70 mm) suelen codificar diámetros y longitudes nominales. Códigos de pouch como 103450 suelen referirse a grosor × ancho × largo (aprox. 10 × 34 × 50 mm), pero los fabricantes pueden variar las dimensiones. **El código físico no determina la química ni la tensión**, por lo que ambos campos se registran por separado.
+
+## Cambios v1.1.0
+
+- Tabla por dispositivo con pruebas y medidas, edición y borrado de filas.
+- Desplegables amplios de química y formato de batería, incluyendo referencias cilíndricas y pouch de litio.
+- Exportación e importación XML de valores numéricos y unidades.
