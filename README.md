@@ -1,8 +1,8 @@
 # Devices · Laboratorio electrónico
 
-Aplicación web instalable (PWA) para inventariar lámparas solares, paneles, baterías y otros dispositivos electrónicos, y documentar sus pruebas.
+Aplicación web instalable (PWA) para inventariar lámparas solares, luces recargables, paneles, baterías y otros dispositivos electrónicos, y documentar sus pruebas.
 
-**Versión:** 1.2.2 · **Fecha:** 20/11/2026
+**Versión:** 1.2.3 · **Fecha:** 20/11/2026
 
 ## Funcionalidades
 
