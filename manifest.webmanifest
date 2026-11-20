@@ -1,11 +1,16 @@
 {
+  "id": "./",
   "name": "Devices · Laboratorio electrónico",
   "short_name": "Devices",
-  "description": "Inventario y experimentos de dispositivos electrónicos",
+  "description": "Registro de dispositivos electrónicos y experimentos",
   "lang": "es",
+  "dir": "ltr",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
+  "display_override": [
+    "standalone"
+  ],
   "background_color": "#eef3f7",
   "theme_color": "#123047",
   "icons": [
@@ -13,7 +18,13 @@
       "src": "./icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
     }
   ]
 }
