@@ -2,7 +2,7 @@
 
 Aplicación web instalable (PWA) para inventariar lámparas solares, paneles, baterías y otros dispositivos electrónicos, y documentar sus pruebas.
 
-**Versión:** 1.2.1 · **Fecha:** 20/11/2026
+**Versión:** 1.2.2 · **Fecha:** 20/11/2026
 
 ## Funcionalidades
 
@@ -11,7 +11,7 @@ Aplicación web instalable (PWA) para inventariar lámparas solares, paneles, ba
 - Potencia del equipo y características del panel solar.
 - **Tabla de pruebas por dispositivo:** fecha y hora, tipo (autonomía, carga, medición, incidencia), valor numérico opcional, unidad y texto libre. Se pueden añadir, editar y eliminar filas; los datos se incluyen en XML.
 - Búsqueda de fichas, tiendas y notas; resumen del número de dispositivos, gasto anotado y observaciones.
-- Una foto comprimida a JPEG de hasta 800 px por dispositivo.
+- Una foto comprimida a JPEG de hasta 800 px por dispositivo. En el móvil puedes **elegir una imagen de la galería** o **hacer una foto con la cámara** mediante controles independientes.
 - Datos locales en **localStorage** del navegador, sin cuenta y sin servidor.
 - Exportación XML (incluyendo fotos y notas), e importación por **fusión**: omite identificadores ya existentes.
 - Interfaz adaptable a móviles, manifest PWA y recursos para funcionamiento sin conexión tras primera visita.
