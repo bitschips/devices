@@ -29,38 +29,48 @@ function renderEditorPhotos(){
  $("#photo-status").textContent=pendingPhotos.length+" de 3 fotos";
 }
 function updateViewer(){
- $("#viewer-image").src=viewerPhotos[viewerIndex];
+ const img=$("#viewer-image");
+ img.src=viewerPhotos[viewerIndex];
  $("#viewer-count").textContent="Foto "+(viewerIndex+1)+" de "+viewerPhotos.length;
- const single=viewerPhotos.length<2;
- $("#viewer-prev").hidden=single;$("#viewer-next").hidden=single;
+ const one=viewerPhotos.length<2;
+ $("#viewer-prev").hidden=one;$("#viewer-next").hidden=one;
 }
 function changeViewer(delta){
- if(!viewerPhotos.length)return;
+ if(viewerPhotos.length<2)return;
  viewerIndex=(viewerIndex+delta+viewerPhotos.length)%viewerPhotos.length;
  updateViewer();
 }
 function showViewer(pictures,index){
  if(!pictures.length)return;
  viewerPhotos=pictures;viewerIndex=Math.max(0,Math.min(index,pictures.length-1));
- updateViewer();$("#photo-viewer").showModal();
+ updateViewer();
+ if(!$("#photo-viewer").open)$("#photo-viewer").showModal();
 }
-$("#viewer-close").onclick=()=>$("#photo-viewer").close();
-$("#viewer-prev").onclick=()=>changeViewer(-1);
-$("#viewer-next").onclick=()=>changeViewer(1);
-$("#photo-viewer").onclick=e=>{if(e.target===$("#photo-viewer"))$("#photo-viewer").close()};
+$("#viewer-close").addEventListener("click",()=>$("#photo-viewer").close());
+$("#viewer-prev").addEventListener("click",()=>changeViewer(-1));
+$("#viewer-next").addEventListener("click",()=>changeViewer(1));
+$("#photo-viewer").addEventListener("click",e=>{
+ if(e.target===$("#photo-viewer"))$("#photo-viewer").close();
+});
 document.addEventListener("keydown",e=>{
  if(!$("#photo-viewer").open)return;
  if(e.key==="ArrowRight"){e.preventDefault();changeViewer(1)}
- if(e.key==="ArrowLeft"){e.preventDefault();changeViewer(-1)}
+ else if(e.key==="ArrowLeft"){e.preventDefault();changeViewer(-1)}
 });
-let touchStartX=null,touchStartY=null;
-$("#viewer-stage").addEventListener("touchstart",e=>{if(e.touches.length!==1)return;touchStartX=e.touches[0].clientX;touchStartY=e.touches[0].clientY},{passive:true});
-$("#viewer-stage").addEventListener("touchend",e=>{
- if(touchStartX===null||!e.changedTouches.length)return;
- const dx=e.changedTouches[0].clientX-touchStartX,dy=e.changedTouches[0].clientY-touchStartY;
- touchStartX=null;touchStartY=null;
- if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.3)changeViewer(dx<0?1:-1);
+const viewerStage=$("#viewer-stage");
+let dragStart=null;
+viewerStage.addEventListener("pointerdown",e=>{
+ if(e.target.closest("button")||viewerPhotos.length<2)return;
+ dragStart={x:e.clientX,y:e.clientY,id:e.pointerId};
 },{passive:true});
+viewerStage.addEventListener("pointerup",e=>{
+ if(!dragStart||e.pointerId!==dragStart.id)return;
+ const dx=e.clientX-dragStart.x,dy=e.clientY-dragStart.y;
+ dragStart=null;
+ if(Math.abs(dx)>35&&Math.abs(dx)>Math.abs(dy)*1.15)changeViewer(dx<0?1:-1);
+},{passive:true});
+viewerStage.addEventListener("pointercancel",()=>{dragStart=null});
+viewerStage.addEventListener("lostpointercapture",()=>{dragStart=null});
 async function compressPhoto(f){
  if(!f.type.startsWith("image/"))throw Error("El archivo no es una imagen");
  const im=new Image(),url=URL.createObjectURL(f);
