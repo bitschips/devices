@@ -2,7 +2,7 @@
 
 Aplicación web instalable (PWA) para inventariar lámparas solares, luces recargables, paneles, baterías y otros dispositivos electrónicos, y documentar sus pruebas.
 
-**Versión:** 1.2.6 · **Fecha:** 20/11/2026
+**Versión:** 1.2.7 · **Fecha:** 20/11/2026
 
 ## Diseño v1.2.4
 
@@ -21,6 +21,12 @@ Aplicación web instalable (PWA) para inventariar lámparas solares, luces recar
 
 - Navegación circular entre fotos ampliadas con botones anterior/siguiente, deslizamiento horizontal en móviles y flechas izquierda/derecha del teclado.
 - Botón «+ Añadir» más pequeño en la barra de herramientas, especialmente en móviles.
+
+## Corrección de galería v1.2.7
+
+- Gestos de navegación mediante Pointer Events para Android y pantallas táctiles, además de botones y teclado.
+- Precarga de la versión reciente de JavaScript con estrategia de red primero para evitar mezclar interfaz nueva y script antiguo cuando hay conexión.
+- Los controles solo se ocultan si existe una única fotografía.
 
 ## Funcionalidades
 
