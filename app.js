@@ -28,15 +28,39 @@ function renderEditorPhotos(){
  });
  $("#photo-status").textContent=pendingPhotos.length+" de 3 fotos";
 }
+function updateViewer(){
+ $("#viewer-image").src=viewerPhotos[viewerIndex];
+ $("#viewer-count").textContent="Foto "+(viewerIndex+1)+" de "+viewerPhotos.length;
+ const single=viewerPhotos.length<2;
+ $("#viewer-prev").hidden=single;$("#viewer-next").hidden=single;
+}
+function changeViewer(delta){
+ if(!viewerPhotos.length)return;
+ viewerIndex=(viewerIndex+delta+viewerPhotos.length)%viewerPhotos.length;
+ updateViewer();
+}
 function showViewer(pictures,index){
  if(!pictures.length)return;
  viewerPhotos=pictures;viewerIndex=Math.max(0,Math.min(index,pictures.length-1));
- $("#viewer-image").src=viewerPhotos[viewerIndex];
- $("#viewer-count").textContent="Foto "+(viewerIndex+1)+" de "+viewerPhotos.length;
- $("#photo-viewer").showModal();
+ updateViewer();$("#photo-viewer").showModal();
 }
 $("#viewer-close").onclick=()=>$("#photo-viewer").close();
+$("#viewer-prev").onclick=()=>changeViewer(-1);
+$("#viewer-next").onclick=()=>changeViewer(1);
 $("#photo-viewer").onclick=e=>{if(e.target===$("#photo-viewer"))$("#photo-viewer").close()};
+document.addEventListener("keydown",e=>{
+ if(!$("#photo-viewer").open)return;
+ if(e.key==="ArrowRight"){e.preventDefault();changeViewer(1)}
+ if(e.key==="ArrowLeft"){e.preventDefault();changeViewer(-1)}
+});
+let touchStartX=null,touchStartY=null;
+$("#viewer-stage").addEventListener("touchstart",e=>{if(e.touches.length!==1)return;touchStartX=e.touches[0].clientX;touchStartY=e.touches[0].clientY},{passive:true});
+$("#viewer-stage").addEventListener("touchend",e=>{
+ if(touchStartX===null||!e.changedTouches.length)return;
+ const dx=e.changedTouches[0].clientX-touchStartX,dy=e.changedTouches[0].clientY-touchStartY;
+ touchStartX=null;touchStartY=null;
+ if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.3)changeViewer(dx<0?1:-1);
+},{passive:true});
 async function compressPhoto(f){
  if(!f.type.startsWith("image/"))throw Error("El archivo no es una imagen");
  const im=new Image(),url=URL.createObjectURL(f);
