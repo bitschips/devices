@@ -2,7 +2,7 @@
 
 Aplicación web instalable (PWA) para inventariar lámparas solares, paneles, baterías y otros dispositivos electrónicos, y documentar sus pruebas.
 
-**Versión:** 1.2.0 · **Fecha:** 20/11/2026
+**Versión:** 1.2.1 · **Fecha:** 20/11/2026
 
 ## Funcionalidades
 
@@ -37,7 +37,8 @@ Las fichas, observaciones y fotos **no se almacenan en GitHub**. Viven solo en e
 - `app.js`: fichas, notas, fotos, almacenamiento y copia XML.
 - `manifest.webmanifest`: datos de instalación.
 - `sw.js`: recursos sin conexión.
-- `icon.svg`: icono vectorial.
+- `icon.svg`, `icon-maskable.svg`: iconos vectoriales normal y adaptativo.
+- `icon-192.png`, `icon-512.png`: iconos PNG para la instalación.
 
 ## Ideas para siguientes versiones
 
@@ -65,5 +66,5 @@ Los formatos cilíndricos de litio como 18650 (aprox. 18 × 65 mm) y 21700 (apro
 - Manifest con nombre, identificador, URL inicial, ámbito, idioma, colores, modo standalone y dos iconos SVG: normal y adaptativo (*maskable*).
 - Icono de electrónica (osciloscopio/mediciones y batería) visible en la cabecera.
 - Service worker v1.2.0 con precaché de los recursos de la aplicación, limpieza de cachés antiguas, respuesta desde caché para recursos estáticos y estrategia red primero para navegación.
-- La instalación requiere HTTPS y una URL publicada; GitHub Pages puede requerir activación por el propietario en Settings → Pages. La compatibilidad de instalación con iconos SVG depende del navegador: algunos dispositivos pueden exigir iconos PNG de 192 y 512 píxeles.
+- La instalación requiere HTTPS y una URL publicada; GitHub Pages puede requerir activación por el propietario en Settings → Pages. La compatibilidad de instalación con iconos SVG depende del navegador: algunos dispositivos ahora también tienen iconos PNG de 192 y 512 píxeles incluidos en el manifiesto.
 - Para actualizar después de instalarla, vuelve a abrir la aplicación con conexión; los datos continúan en el almacenamiento local de ese navegador.
