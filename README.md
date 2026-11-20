@@ -2,13 +2,20 @@
 
 Aplicación web instalable (PWA) para inventariar lámparas solares, luces recargables, paneles, baterías y otros dispositivos electrónicos, y documentar sus pruebas.
 
-**Versión:** 1.2.4 · **Fecha:** 20/11/2026
+**Versión:** 1.2.5 · **Fecha:** 20/11/2026
 
 ## Diseño v1.2.4
 
 - Tarjetas adaptables con datos, fotografía y botones de acción en ese orden.
 - Resumen pequeño de dispositivos, gasto y observaciones al final del listado.
 - Datos locales y formato XML conservados; caché PWA actualizada.
+
+## Fotografías v1.2.5
+
+- Hasta tres fotos por dispositivo desde galería (selección múltiple) o cámara.
+- Miniaturas en una fila de tres columnas, ampliables con un toque en un visor modal.
+- Eliminación individual de fotos al editar y compresión JPEG a 800 px.
+- Las fotos antiguas siguen siendo visibles y se conservan al editar; copia XML con galería completa e importación de copias anteriores.
 
 ## Funcionalidades
 
@@ -17,7 +24,7 @@ Aplicación web instalable (PWA) para inventariar lámparas solares, luces recar
 - Potencia del equipo y características del panel solar.
 - **Tabla de pruebas por dispositivo:** fecha y hora, tipo (autonomía, carga, medición, incidencia), valor numérico opcional, unidad y texto libre. Se pueden añadir, editar y eliminar filas; los datos se incluyen en XML.
 - Búsqueda de fichas, tiendas y notas; resumen del número de dispositivos, gasto anotado y observaciones.
-- Una foto comprimida a JPEG de hasta 800 px por dispositivo. En el móvil puedes **elegir una imagen de la galería** o **hacer una foto con la cámara** mediante controles independientes.
+- Hasta 3 fotos comprimidas a JPEG de hasta 800 px por dispositivo. En el móvil puedes **elegir una imagen de la galería** o **hacer una foto con la cámara** mediante controles independientes.
 - Datos locales en **localStorage** del navegador, sin cuenta y sin servidor.
 - Exportación XML (incluyendo fotos y notas), e importación por **fusión**: omite identificadores ya existentes.
 - Interfaz adaptable a móviles, manifest PWA y recursos para funcionamiento sin conexión tras primera visita.
