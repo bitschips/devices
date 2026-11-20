@@ -2,7 +2,7 @@
 
 Aplicación web instalable (PWA) para inventariar lámparas solares, paneles, baterías y otros dispositivos electrónicos, y documentar sus pruebas.
 
-**Versión:** 1.1.0 · **Fecha:** 20/11/2026
+**Versión:** 1.2.0 · **Fecha:** 20/11/2026
 
 ## Funcionalidades
 
@@ -59,3 +59,11 @@ Los formatos cilíndricos de litio como 18650 (aprox. 18 × 65 mm) y 21700 (apro
 - Tabla por dispositivo con pruebas y medidas, edición y borrado de filas.
 - Desplegables amplios de química y formato de batería, incluyendo referencias cilíndricas y pouch de litio.
 - Exportación e importación XML de valores numéricos y unidades.
+
+## PWA v1.2.0 — instalación y uso sin conexión
+
+- Manifest con nombre, identificador, URL inicial, ámbito, idioma, colores, modo standalone y dos iconos SVG: normal y adaptativo (*maskable*).
+- Icono de electrónica (osciloscopio/mediciones y batería) visible en la cabecera.
+- Service worker v1.2.0 con precaché de los recursos de la aplicación, limpieza de cachés antiguas, respuesta desde caché para recursos estáticos y estrategia red primero para navegación.
+- La instalación requiere HTTPS y una URL publicada; GitHub Pages puede requerir activación por el propietario en Settings → Pages. La compatibilidad de instalación con iconos SVG depende del navegador: algunos dispositivos pueden exigir iconos PNG de 192 y 512 píxeles.
+- Para actualizar después de instalarla, vuelve a abrir la aplicación con conexión; los datos continúan en el almacenamiento local de ese navegador.
